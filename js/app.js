@@ -1,8 +1,8 @@
 const vm = new Vue({
   el: "#c",
   data: {
-    sorteio: ["", "", "", "", "", "", ""],
-    jogos: [],
+    sorteio: [...config.sorteioDefault],
+    jogos: [...config.jogosDefault],
   },
   computed: {
     jogosResultado() {
@@ -36,16 +36,16 @@ const vm = new Vue({
     },
   },
   mounted() {
-    this.carregarJogos();
     this.$el.classList.remove("no");
   },
   methods: {
     carregarJogos() {
       if (!this.$refs.inputJogos.value) {
-        this.jogos = [...config.jogosDefault];
+        this.jogos = [];
         return;
       }
 
+      this.jogos = [];
       this.$refs.inputJogos.value.split("\n").forEach((inputJogo) => {
         let jogo = [];
         inputJogo
