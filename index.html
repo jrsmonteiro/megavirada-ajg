@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://intranet.policiamilitar.mg.gov.br/static/css/estilo.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+    <title>Mega Sena - DTS</title>
+  </head>
+  <body>
+    <div id="g">
+      <div id="m">
+        <h1>Mega Sena - DTS</h1>
+      </div>
+      <div id="n">
+        <a href="#">Bolão da Mega Sena</a> / <a href="#">Sistema</a> /
+        <a href="#">Conferência</a>
+      </div>
+      <div id="c" class="central">
+        <form class="form-conferencia">
+          <input v-model="sorteio[0]" type="number" step="1" />
+          <input v-model="sorteio[1]" type="number" step="1" />
+          <input v-model="sorteio[2]" type="number" step="1" />
+          <input v-model="sorteio[3]" type="number" step="1" />
+          <input v-model="sorteio[4]" type="number" step="1" />
+          <input v-model="sorteio[5]" type="number" step="1" />
+
+          <button @click.prevent.stop="limpar" type="button" class="pointer">
+            Limpar
+          </button>
+        </form>
+
+        <div v-for="(jogo, index) in jogosResultado" :key="index" class="jogo">
+          <div class="numeros">
+            <span
+              v-for="numero in jogo.numeros"
+              :key="numero.value"
+              class="numero"
+              :class="{'numero-acerto': numero.acerto }"
+              >{{ numero.value }}</span
+            >
+          </div>
+
+          <div v-if="jogo.totalAcertos > 0" class="jogo-resultado">
+            <span v-if="jogo.isSena" class="ic de ok verde"
+              >Sena!!!! Estamos ricos!!!</span
+            >
+            <span v-if="jogo.isQuina" class="ic de es az"
+              >Quina! Quem sabe...</span
+            >
+            <span v-if="jogo.isQuadra">Quadra</span>
+            <span v-if="jogo.totalAcertos < 4"
+              >{{ jogo.totalAcertos }} acertos</span
+            >
+          </div>
+        </div>
+
+        <br />
+        <div>
+          <fieldset>
+            <textarea
+              ref="inputJogos"
+              style="height: 200px"
+              placeholder="Insira aqui seus jogos. Um jogo em cada linha, e números separados com um espaço em branco."
+            ></textarea>
+          </fieldset>
+          <div class="su">
+            <button @click.prevent.stop="carregarJogos" type="button">
+              Carregar jogos
+            </button>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>

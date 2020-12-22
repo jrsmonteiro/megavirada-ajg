@@ -1,0 +1,31 @@
+.form-conferencia {
+    margin-bottom: 30px;
+}
+
+.form-conferencia input {
+    max-width: 55px;
+}
+
+.jogo {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.jogo-resultado {
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.numero {
+    display: inline-block;
+    margin-left: 5px;
+    background-color: #ddd;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.numero-acerto {
+    background-color: green;
+    color: #fff;
+}
