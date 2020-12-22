@@ -3,80 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://intranet.policiamilitar.mg.gov.br/static/css/estilo.css"
-    />
+    <link rel="stylesheet" type="text/css" href="./css/pure.css" />
     <link rel="stylesheet" type="text/css" href="./css/app.css" />
     <title>Mega Sena - DTS</title>
   </head>
   <body>
-    <div id="g">
-      <div id="m">
-        <h1>Mega Sena - DTS</h1>
+    <div class="header">
+      <div class="home-menu pure-menu pure-menu-horizontal">
+        <a class="pure-menu-heading" href="">Mega Sena - DTS</a>
       </div>
-      <div id="n">
-        <a href="#">Bolão da Mega Sena</a> / <a href="#">Sistema</a> /
-        <a href="#">Conferência</a>
-      </div>
-      <div id="c" class="central no">
-        <form class="form-conferencia">
-          <input v-model="sorteio[0]" type="number" step="1" />
-          <input v-model="sorteio[1]" type="number" step="1" />
-          <input v-model="sorteio[2]" type="number" step="1" />
-          <input v-model="sorteio[3]" type="number" step="1" />
-          <input v-model="sorteio[4]" type="number" step="1" />
-          <input v-model="sorteio[5]" type="number" step="1" />
+    </div>
 
-          <button @click.prevent.stop="limpar" type="button" class="pointer">
-            Limpar
-          </button>
+    <div class="content">
+      <h3>Conferência de resultado</h3>
+
+      <div id="app" class="hidden">
+        <form class="pure-form form-conferencia">
+          <div class="pure-g">
+            <div v-for="n in 6" class="pure-u-1-8 center">
+              <input
+                v-model="sorteio[n - 1]"
+                type="number"
+                step="1"
+                class="pure-u-23-24"
+              />
+            </div>
+
+            <div class="pure-u-1-4">
+              <button
+                @click.prevent.stop="limpar"
+                type="button"
+                class="pure-button botao-limpar"
+              >
+                X
+              </button>
+            </div>
+          </div>
         </form>
 
-        <div v-for="(jogo, index) in jogosResultado" :key="index" class="jogo">
-          <div class="numeros">
-            <span
+        <div
+          v-for="(jogo, index) in jogosResultado"
+          :key="index"
+          class="jogo"
+          :class="{'jogo-is-sena': jogo.isSena, 'jogo-is-quina': jogo.isQuina, 'jogo-is-quadra': jogo.isQuadra}"
+        >
+          <div class="pure-g jogo-numeros">
+            <div
               v-for="numero in jogo.numeros"
               :key="numero.value"
-              class="numero"
-              :class="{'numero-acerto': numero.acerto }"
-              >{{ numero.value }}</span
+              class="pure-u-1-6 center"
             >
+              <span
+                class="jogo-numero"
+                :class="{'jogo-numero-acerto': numero.acerto }"
+                >{{ numero.value }}</span
+              >
+            </div>
           </div>
 
           <div v-if="jogo.totalAcertos > 0" class="jogo-resultado">
-            <span v-if="jogo.isSena" class="ic de ok verde"
-              >Sena!!!! Estamos ricos!!!</span
-            >
-            <span v-if="jogo.isQuina" class="ic de es az"
-              >Quina! Quem sabe...</span
-            >
-            <span v-if="jogo.isQuadra">Quadra</span>
-            <span v-if="jogo.totalAcertos < 4"
-              >{{ jogo.totalAcertos }} acertos</span
+            <span v-if="jogo.isSena">Sena!!!! Estamos ricos!!!</span>
+            <span v-if="jogo.isQuina">Quina! Muito próximo!</span>
+            <span v-if="jogo.isQuadra">Quadra. Quase lá!</span>
+            <span v-if="jogo.totalAcertos < 4">
+              <span style="font-size: 80%">Acertos:</span>
+              <strong>{{ jogo.totalAcertos }}</strong></span
             >
           </div>
         </div>
 
         <br />
         <div>
-          <fieldset>
+          <form class="pure-form">
             <textarea
               ref="inputJogos"
               style="height: 200px"
               placeholder="Insira aqui seus jogos. Um jogo em cada linha, e números separados com um espaço em branco."
+              class="pure-u-1"
             ></textarea>
-          </fieldset>
-          <div class="su">
+
+            <br />
+            <br />
             <button
               @click.prevent.stop="carregarJogos"
               type="button"
-              class="pointer"
+              class="pure-button pure-button-primary"
             >
               Carregar jogos
             </button>
-          </div>
+          </form>
         </div>
         <br />
       </div>

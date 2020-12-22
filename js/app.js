@@ -1,5 +1,5 @@
 const vm = new Vue({
-  el: "#c",
+  el: "#app",
   data: {
     sorteio: [...config.sorteioDefault],
     jogos: [...config.jogosDefault],
@@ -36,7 +36,7 @@ const vm = new Vue({
     },
   },
   mounted() {
-    this.$el.classList.remove("no");
+    this.$el.classList.remove("hidden");
   },
   methods: {
     carregarJogos() {

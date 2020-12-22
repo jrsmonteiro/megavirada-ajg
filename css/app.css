@@ -1,31 +1,187 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+body {
+  line-height: 1.7em;
+  color: #444;
+  font-size: 13px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+  color: #34495e;
+}
+
+/*
+ * -- LAYOUT STYLES --
+ * These are some useful classes which I will need
+ */
+.l-box {
+  padding: 1em;
+}
+
+.l-box-lrg {
+  padding: 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.is-center {
+  text-align: center;
+}
+
+/*
+ * -- MENU STYLES --
+ * I want to customize how my .pure-menu looks at the top of the page
+ */
+
+.home-menu {
+  padding: 0.5em;
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.home-menu {
+  background: #2d3e50;
+}
+
+.home-menu .pure-menu-heading {
+  color: white;
+  font-weight: 400;
+  font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+  color: white;
+}
+
+.home-menu a {
+  color: #6fbef3;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+  background: none;
+  border: none;
+  color: #aecfe5;
+}
+
+/* We want to give the content area some more padding */
+.content {
+  padding: 1em 1em 3em;
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 48em) {
+  /* We increase the body font size */
+  body {
+    font-size: 16px;
+  }
+
+  /* We can align the menu header to the left, but float the
+    menu items to the right. */
+  .home-menu {
+    text-align: left;
+  }
+  .home-menu ul {
+    float: right;
+  }
+
+  .l-box-lrg {
+    border: none;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+h3 {
+  border-bottom: 1px solid #34495e;
+  margin-bottom: 30px;
+}
+
+.center {
+  justify-content: center;
+  text-align: center;
+}
+
 .form-conferencia {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .form-conferencia input {
-    max-width: 50px;
+  max-width: 100px;
+}
+
+.botao-limpar {
+  background: red;
+  font-weight: bold;
+  color: #fff;
 }
 
 .jogo {
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.jogo-is-sena {
+  background-color: lightgreen;
+  animation: blinker 1s linear infinite;
+}
+
+.jogo-is-quina {
+  background-color: lightblue;
+}
+
+.jogo-is-quadra {
+  background-color: #eeeeee;
 }
 
 .jogo-resultado {
-    padding-top: 10px;
-    font-weight: bold;
+  padding-top: 10px;
+  font-weight: bold;
 }
 
-.numero {
-    display: inline-block;
-    margin-left: 5px;
-    background-color: #ddd;
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 50%;
+.jogo-numeros {
+  line-height: 40px;
 }
 
-.numero-acerto {
-    background-color: green;
-    color: #fff;
+.jogo-numero {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: #ddd;
+  font-weight: bold;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.jogo-numero-acerto {
+  background-color: green;
+  color: #fff;
+}
+
+.jogo-total-acertos {
+  font-size: 110%;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
