@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./css/pure.css" />
-    <link rel="stylesheet" type="text/css" href="./css/app.css?v=3" />
+    <link rel="stylesheet" type="text/css" href="./css/app.css?v=4" />
     <title>Mega Sena - DTS</title>
   </head>
   <body>
@@ -45,7 +45,7 @@
           v-for="(jogo, index) in jogosResultado"
           :key="index"
           class="jogo"
-          :class="{'jogo-is-sena': jogo.isSena, 'jogo-is-quina': jogo.isQuina, 'jogo-is-quadra': jogo.isQuadra}"
+          :class="jogo.cssClass"
         >
           <div class="pure-g jogo-numeros">
             <div
@@ -97,7 +97,7 @@
       </div>
     </div>
     <script src="./js/vue.min.js"></script>
-    <script src="./js/config.js?v=3"></script>
-    <script src="./js/app.js?v=3"></script>
+    <script src="./js/config.js?v=4"></script>
+    <script src="./js/app.js?v=4"></script>
   </body>
 </html>

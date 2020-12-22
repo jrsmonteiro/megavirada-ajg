@@ -24,6 +24,7 @@ const vm = new Vue({
           return {
             numeros: numeros,
             totalAcertos: totalAcertos,
+            cssClass: this.getJogoCssClass(totalAcertos),
             isQuadra: totalAcertos === 4,
             isQuina: totalAcertos === 5,
             isSena: totalAcertos === 6,
@@ -59,6 +60,19 @@ const vm = new Vue({
 
         //this.$refs.inputJogos.value = JSON.stringify(this.jogos);
       });
+    },
+
+    getJogoCssClass(totalAcertos) {
+      switch (totalAcertos) {
+        case 4:
+          return "jogo-is-quadra";
+        case 5:
+          return "jogo-is-quina";
+        case 4:
+          return "jogo-is-sena";
+        default:
+          return "";
+      }
     },
 
     limpar() {
