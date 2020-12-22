@@ -68,7 +68,7 @@ const vm = new Vue({
           return "jogo-is-quadra";
         case 5:
           return "jogo-is-quina";
-        case 4:
+        case 6:
           return "jogo-is-sena";
         default:
           return "";
