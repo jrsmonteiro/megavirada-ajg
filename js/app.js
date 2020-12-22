@@ -2,10 +2,7 @@ const vm = new Vue({
   el: "#c",
   data: {
     sorteio: ["", "", "", "", "", "", ""],
-    jogos: [
-      ["08", "10", "15", "32", "40", "55"],
-      ["09", "12", "15", "38", "40", "57"],
-    ],
+    jogos: [],
   },
   computed: {
     jogosResultado() {
