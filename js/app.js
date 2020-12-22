@@ -37,6 +37,7 @@ const vm = new Vue({
   },
   mounted() {
     this.carregarJogos();
+    this.$el.classList.remove("no");
   },
   methods: {
     carregarJogos() {
