@@ -180,6 +180,10 @@ h3 {
   font-size: 110%;
 }
 
+.flip-list-move {
+  transition: transform 0.5s;
+}
+
 @keyframes blinker {
   50% {
     opacity: 0;

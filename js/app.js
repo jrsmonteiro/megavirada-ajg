@@ -22,6 +22,7 @@ const vm = new Vue({
           });
 
           return {
+            hash: jogo.join(""),
             numeros: numeros,
             totalAcertos: totalAcertos,
             cssClass: this.getJogoCssClass(totalAcertos),

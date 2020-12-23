@@ -35,42 +35,44 @@
                 type="button"
                 class="pure-button botao-limpar"
               >
-                X
+                Limpar
               </button>
             </div>
           </div>
         </form>
 
-        <div
-          v-for="(jogo, index) in jogosResultado"
-          :key="index"
-          class="jogo"
-          :class="jogo.cssClass"
-        >
-          <div class="pure-g jogo-numeros">
-            <div
-              v-for="numero in jogo.numeros"
-              :key="numero.value"
-              class="pure-u-1-6 center"
-            >
-              <span
-                class="jogo-numero"
-                :class="{'jogo-numero-acerto': numero.acerto }"
-                >{{ numero.value }}</span
+        <transition-group name="flip-list" tag="div">
+          <div
+            v-for="jogo in jogosResultado"
+            :key="jogo.hash"
+            class="jogo"
+            :class="jogo.cssClass"
+          >
+            <div class="pure-g jogo-numeros">
+              <div
+                v-for="numero in jogo.numeros"
+                :key="numero.value"
+                class="pure-u-1-6 center"
+              >
+                <span
+                  class="jogo-numero"
+                  :class="{'jogo-numero-acerto': numero.acerto }"
+                  >{{ numero.value }}</span
+                >
+              </div>
+            </div>
+
+            <div v-if="jogo.totalAcertos > 0" class="jogo-resultado">
+              <span v-if="jogo.isSena">Sena!!!! Estamos ricos!!!</span>
+              <span v-if="jogo.isQuina">Quina! Muito próximo!</span>
+              <span v-if="jogo.isQuadra">Quadra. Quase lá!</span>
+              <span v-if="jogo.totalAcertos < 4">
+                <span style="font-size: 80%">Acertos:</span>
+                <strong>{{ jogo.totalAcertos }}</strong></span
               >
             </div>
           </div>
-
-          <div v-if="jogo.totalAcertos > 0" class="jogo-resultado">
-            <span v-if="jogo.isSena">Sena!!!! Estamos ricos!!!</span>
-            <span v-if="jogo.isQuina">Quina! Muito próximo!</span>
-            <span v-if="jogo.isQuadra">Quadra. Quase lá!</span>
-            <span v-if="jogo.totalAcertos < 4">
-              <span style="font-size: 80%">Acertos:</span>
-              <strong>{{ jogo.totalAcertos }}</strong></span
-            >
-          </div>
-        </div>
+        </transition-group>
 
         <br />
         <div>
