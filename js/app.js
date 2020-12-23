@@ -6,14 +6,12 @@ const vm = new Vue({
   },
   computed: {
     jogosResultado() {
-      let sorteio = this.sorteio;
-
       return this.jogos
         .map((jogo) => {
           let totalAcertos = 0;
 
           let numeros = jogo.map((numero) => {
-            let acerto = sorteio.includes(numero);
+            let acerto = this.sorteio.includes(numero);
             if (acerto) totalAcertos++;
             return {
               value: numero,
@@ -47,19 +45,22 @@ const vm = new Vue({
         return;
       }
 
-      this.jogos = [];
+      let jogos = [];
       this.$refs.inputJogos.value.split("\n").forEach((inputJogo) => {
         let jogo = [];
         inputJogo
           .trim()
           .split(config.separador)
           .forEach((numero) => {
-            jogo.push(numero.padStart(2, "0"));
+            jogo.push(numero.trim().padStart(2, "0"));
           });
 
-        this.jogos.push(jogo);
+        this.jogos = jogos;
 
-        //this.$refs.inputJogos.value = JSON.stringify(this.jogos);
+        /**
+         * ! Usado para facilitar a criação dos jogos default.
+         * this.$refs.inputJogos.value = JSON.stringify(this.jogos);
+         */
       });
     },
 
