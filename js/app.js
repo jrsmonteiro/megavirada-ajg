@@ -45,6 +45,7 @@ const vm = new Vue({
         return;
       }
 
+      let hashsUnicos = [];
       let jogos = [];
       this.$refs.inputJogos.value.split("\n").forEach((inputJogo) => {
         let jogo = [];
@@ -55,13 +56,20 @@ const vm = new Vue({
             jogo.push(numero.trim().padStart(2, "0"));
           });
 
-        this.jogos = jogos;
-
-        /**
-         * ! Usado para facilitar a criação dos jogos default.
-         * this.$refs.inputJogos.value = JSON.stringify(this.jogos);
-         */
+        let hash = jogo.join("");
+        if (!hashsUnicos.includes(hash)) {
+          jogos.push(jogo);
+          hashsUnicos.push(hash);
+        }
       });
+
+      this.jogos = jogos;
+      this.$refs.inputJogos.value = JSON.stringify(jogos);
+
+      /**
+       * ! Usado para facilitar a criação dos jogos default.
+       * this.$refs.inputJogos.value = JSON.stringify(jogos);
+       */
     },
 
     getJogoCssClass(totalAcertos) {

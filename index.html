@@ -10,7 +10,7 @@
     <meta name="autor" content="José Ricardo Supérbi Monteiro" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="./css/pure.css" />
-    <link rel="stylesheet" type="text/css" href="./css/app.css?v=5" />
+    <link rel="stylesheet" type="text/css" href="./css/app.css?v=6" />
     <title>Mega-Sena DTS</title>
   </head>
   <body>
@@ -26,7 +26,7 @@
       <div id="app" class="hidden">
         <form class="pure-form form-conferencia">
           <div class="pure-g">
-            <div v-for="n in 6" class="pure-u-1-8 center">
+            <div v-for="n in 6" :key="n" class="pure-u-1-8 center">
               <input
                 v-model="sorteio[n - 1]"
                 type="number"
@@ -105,7 +105,7 @@
       </div>
     </div>
     <script src="./js/vue.min.js"></script>
-    <script src="./js/config.js?v=5"></script>
-    <script src="./js/app.js?v=5"></script>
+    <script src="./js/config.js?v=6"></script>
+    <script src="./js/app.js?v=6"></script>
   </body>
 </html>
