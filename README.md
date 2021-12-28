@@ -1,2 +1,2 @@
 # megasenadts
-Bolão da Mega Sena dos funcionários da DTS
+Bolão da Mega Sena dos funcionários da Ajudância-Geral
