@@ -9,7 +9,6 @@ const vm = new Vue({
       return this.jogos
         .map((jogo) => {
           let totalAcertos = 0;
-
           let numeros = jogo.map((numero) => {
             let acerto = this.sorteio.includes(numero);
             if (acerto) totalAcertos++;
@@ -64,7 +63,6 @@ const vm = new Vue({
       });
 
       this.jogos = jogos;
-      this.$refs.inputJogos.value = JSON.stringify(jogos);
 
       /**
        * ! Usado para facilitar a criação dos jogos default.
